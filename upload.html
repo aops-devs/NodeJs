@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Upload File</title>
+  </head>
+  <body>
+	
+	File Name: 
+	<input id="File" type="text"> </input> <br>
+	<button type="button" onclick="upload()"> Upload </button>
+	
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+	  
+	  function upload(){
+	  socket.emit('upload', $('#File').val());
+	  $('#File').val('');
+	  };
+	  
+	  socket.on('alert', function(msg){
+	  alert(msg);
+	  });
+
+    </script>
+  </body>
+</html>
